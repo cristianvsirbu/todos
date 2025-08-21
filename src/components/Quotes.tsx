@@ -39,7 +39,7 @@ const Quotes = () => {
 				<p className="mt-2 text-gray-600">
 					Inspire yourself with motivational quotes!
 				</p>
-				<div className="mt-8 p-4 bg-white shadow-md rounded-lg w-full max-w-lg">
+				<div className="mt-8 p-4 bg-white dark:bg-neutral-800 shadow-md rounded-lg w-full max-w-lg">
 					{error && (
 						<p className="text-red-500 text-2xl font-semibold">{error}</p>
 					)}
