@@ -7,7 +7,7 @@ const ThemeToggle = () => {
 	const [dark, setDark] = useState<boolean>(false);
 	const toggleTheme = () => {
 		setDark((prev: boolean) => !prev);
-		document.documentElement.classList.toggle("dark", !dark);
+		document.body.classList.toggle("dark", !dark);
 	};
 
 	return (
@@ -30,7 +30,7 @@ const Navbar = () => {
 
 	return (
 		<nav
-			className="sticky top-4 z-1 max-w-[1280px] mx-auto flex items-center justify-between px-16 bg-white dark:bg-black
+			className="sticky top-4 z-1 max-w-[1280px] mx-4 xl:mx-auto flex items-center justify-between px-8 bg-white dark:bg-black
 		 shadow-md rounded-xl"
 		>
 			<NavLink to="/">
