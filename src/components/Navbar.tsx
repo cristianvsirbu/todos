@@ -44,9 +44,9 @@ const Navbar = () => {
 	return (
 		<>
 			{isMobile ? (
-				<>
+				<div className="sticky top-0 z-1">
 					<nav
-						className={`sticky z-1 h-14 flex items-center justify-between px-8 bg-white dark:bg-black
+						className={`h-14 flex items-center justify-between px-8 bg-white dark:bg-black
 							${mobileMenuOpen ? "" : "shadow-md"}`}
 					>
 						<NavLink to="/">
@@ -94,7 +94,7 @@ const Navbar = () => {
 							<ThemeToggle />
 						</ul>
 					)}
-				</>
+				</div>
 			) : (
 				<nav
 					className="sticky top-4 z-1 max-w-[1280px] mx-4 xl:mx-auto flex items-center justify-between px-8 bg-white dark:bg-black
