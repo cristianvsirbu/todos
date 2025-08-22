@@ -36,7 +36,7 @@ const Quotes = () => {
 		<div>
 			<div className="flex flex-col items-center justify-center h-screen">
 				<h1 className="text-blue-400 text-4xl font-bold">Quote of the Day</h1>
-				<p className="mt-2 text-gray-600">
+				<p className="mt-2 text-gray-600 dark:text-gray-300">
 					Inspire yourself with motivational quotes!
 				</p>
 				<div className="mt-8 p-4 bg-white dark:bg-neutral-800 shadow-md rounded-lg w-full max-w-lg">
