@@ -79,11 +79,11 @@ const Todos = () => {
 	const getUrgencyGradient = (urgency: "low" | "medium" | "high") => {
 		switch (urgency) {
 			case "low":
-				return "bg-gradient-to-r from-white to-green-400";
+				return "bg-gradient-to-r from-white dark:from-black dark:to-green-800 dark:text-white to-green-400";
 			case "medium":
-				return "bg-gradient-to-r from-white to-yellow-400";
+				return "bg-gradient-to-r dark:from-black dark:to-yellow-800 dark:text-white from-white to-yellow-400";
 			case "high":
-				return "bg-gradient-to-r from-white to-red-400";
+				return "bg-gradient-to-r dark:from-black dark:to-red-800 dark:text-white from-white to-red-400";
 			default:
 				return "";
 		}
@@ -92,12 +92,14 @@ const Todos = () => {
 	return (
 		<div className="mx-auto text-center h-full mt-16">
 			<h1 className="text-green-400 text-4xl font-bold">Your Todos</h1>
-			<p className="mt-2 text-gray-600">Manage your tasks efficiently!</p>
+			<p className="mt-2 text-gray-600 dark:text-gray-300">
+				Manage your tasks efficiently!
+			</p>
 
 			{/* Filter and Sort */}
 			<div className="flex items-center justify-center mt-4 gap-4">
 				<select
-					className="p-2 bg-white shadow-md rounded-lg"
+					className="p-2 bg-white dark:bg-black dark:text-white shadow-md rounded-lg"
 					onChange={(e) =>
 						setFilter(e.target.value as "all" | "completed" | "pending")
 					}
@@ -108,7 +110,7 @@ const Todos = () => {
 				</select>
 				<select
 					onChange={(e) => setSortOrder(e.target.value as "newest" | "oldest")}
-					className="p-2 bg-white shadow-md rounded-lg"
+					className="p-2 bg-white dark:bg-black dark:text-white shadow-md rounded-lg"
 				>
 					<option value="newest">Newest First</option>
 					<option value="oldest">Oldest First</option>
@@ -118,7 +120,7 @@ const Todos = () => {
 			{/* Todo Form Modal */}
 			{isModalOpen && (
 				<div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
-					<div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+					<div className="bg-white dark:bg-black dark:text-white p-6 rounded-lg shadow-lg w-full max-w-md">
 						<h2 className="text-2xl font-bold mb-4">Add New Todo</h2>
 						<div>
 							<label className="block mb-2">Title</label>
@@ -139,14 +141,14 @@ const Todos = () => {
 								value={todoForm.dueDate}
 								required
 								onChange={handleInputChange}
-								className="w-full p-2 border border-gray-300 rounded-lg mb-4"
+								className="w-full p-2 border border-gray-300 rounded-lg mb-4 dark:[&::-webkit-calendar-picker-indicator]:invert"
 							/>
 							<label className="block mb-2">Urgency</label>
 							<select
 								name="urgency"
 								value={todoForm.urgency}
 								onChange={handleInputChange}
-								className="w-full p-2 border border-gray-300 rounded-lg mb-4"
+								className="w-full p-2 border dark:bg-black dark:text-white border-gray-300 rounded-lg mb-4"
 							>
 								<option value="low">Low</option>
 								<option value="medium">Medium</option>
@@ -232,7 +234,7 @@ const Todos = () => {
 							/>
 							<div>
 								<p className="text-xl font-semibold">{todo.title}</p>
-								<span className="text-sm text-gray-600">{todo.dueDate}</span>
+								<span className="text-sm text-gray-600 dark:text-gray-300">{todo.dueDate}</span>
 							</div>
 							<div className="ml-auto flex items-center gap-2">
 								<span className="text-white font-semibold">{todo.urgency}</span>
@@ -249,7 +251,7 @@ const Todos = () => {
 					))}
 				</div>
 			) : (
-				<p className="mt-4 text-2xl font-bold">
+				<p className="mt-4 text-2xl font-bold dark:text-white">
 					No Todos yet! Add one with the button above!
 				</p>
 			)}
