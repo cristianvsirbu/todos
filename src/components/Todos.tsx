@@ -120,7 +120,7 @@ const Todos = () => {
 			{/* Todo Form Modal */}
 			{isModalOpen && (
 				<div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
-					<div className="bg-white dark:bg-black dark:text-white p-6 rounded-lg shadow-lg w-full max-w-md">
+					<div className="bg-white mx-4 lg:mx-0 dark:bg-black dark:text-white p-6 rounded-lg shadow-lg w-full max-w-md">
 						<h2 className="text-2xl font-bold mb-4">Add New Todo</h2>
 						<div>
 							<label className="block mb-2">Title</label>
@@ -211,7 +211,7 @@ const Todos = () => {
 
 			{/* Todo List */}
 			{processedTodos.length > 0 ? (
-				<div className="mt-4 w-full max-w-md mx-auto text-start">
+				<div className="mt-4 w-full max-w-md mx-auto text-start px-4 lg:px-0">
 					{processedTodos.map((todo) => (
 						<div
 							key={todo.id}
