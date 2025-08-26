@@ -34,7 +34,7 @@ const Quotes = () => {
 
 	return (
 		<div>
-			<div className="flex flex-col items-center justify-center h-screen">
+			<div className="flex flex-col items-center justify-center h-screen px-4 lg:px-0">
 				<h1 className="text-blue-400 text-4xl font-bold">Quote of the Day</h1>
 				<p className="mt-2 text-gray-600 dark:text-gray-300">
 					Inspire yourself with motivational quotes!
