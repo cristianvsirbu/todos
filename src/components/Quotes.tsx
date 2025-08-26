@@ -45,7 +45,9 @@ const Quotes = () => {
 					)}
 					{quote && !error && (
 						<>
-							<p className="text-xl font-semibold dark:text-white">{quote.content}</p>
+							<p className="text-xl font-semibold dark:text-white">
+								{quote.content}
+							</p>
 							<span className="text-sm text-gray-600 dark:text-gray-400 mt-2 float-end">
 								{quote.author}
 							</span>
