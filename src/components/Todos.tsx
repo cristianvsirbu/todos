@@ -234,7 +234,9 @@ const Todos = () => {
 							/>
 							<div>
 								<p className="text-xl font-semibold">{todo.title}</p>
-								<span className="text-sm text-gray-600 dark:text-gray-300">{todo.dueDate}</span>
+								<span className="text-sm text-gray-600 dark:text-gray-300">
+									{todo.dueDate}
+								</span>
 							</div>
 							<div className="ml-auto flex items-center gap-2">
 								<span className="text-white font-semibold">{todo.urgency}</span>
