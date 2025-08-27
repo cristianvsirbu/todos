@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { IoRefreshCircleOutline } from "react-icons/io5";
+import * as motion from "motion/react-client";
 
 const URL = "https://api.quotable.io/quotes/random";
 
@@ -55,12 +56,16 @@ const Quotes = () => {
 					)}
 				</div>
 
-				<button
+				<motion.button
+					key={quote?.content}
+					animate={{ rotate: 360 }}
+					initial={{ rotate: 0 }}
+					transition={{ duration: 0.2, ease: "linear" }}
 					onClick={() => fetchQuote()}
 					className="cursor-pointer text-white mt-8 hover:scale-105 transition-transform duration-200"
 				>
 					<IoRefreshCircleOutline className="size-12 inline-block bg-blue-500 rounded-full hover:bg-blue-600 transition-colors duration-200" />
-				</button>
+				</motion.button>
 			</div>
 		</div>
 	);
