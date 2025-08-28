@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { FaMoon } from "react-icons/fa";
 import { IoClose, IoMenu } from "react-icons/io5";
@@ -65,35 +66,61 @@ const Navbar = () => {
 							)}
 						</button>
 					</nav>
-					{mobileMenuOpen && (
-						<ul className="flex absolute w-full items-center flex-col bg-white dark:bg-black shadow-md py-4 gap-8 dark:text-white">
-							<li>
-								<NavLink
-									to="/"
-									className={({ isActive }) => getLinkClass({ isActive })}
+					<AnimatePresence>
+						{mobileMenuOpen && (
+							<motion.ul
+								initial={{ height: 0, opacity: 0 }}
+								animate={{ height: "auto", opacity: 1 }}
+								exit={{ height: 0, opacity: 0 }}
+								transition={{ duration: 0.3, ease: "easeInOut" }}
+								className="flex absolute w-full items-center flex-col bg-white dark:bg-black shadow-md py-4 gap-8 dark:text-white overflow-hidden"
+							>
+								<motion.li
+									initial={{ y: -20 }}
+									animate={{ y: 0 }}
+									transition={{ delay: 0.1 }}
 								>
-									Home
-								</NavLink>
-							</li>
-							<li>
-								<NavLink
-									to="/todos"
-									className={({ isActive }) => getLinkClass({ isActive })}
+									<NavLink
+										to="/"
+										className={({ isActive }) => getLinkClass({ isActive })}
+									>
+										Home
+									</NavLink>
+								</motion.li>
+								<motion.li
+									initial={{ y: -20 }}
+									animate={{ y: 0 }}
+									transition={{ delay: 0.2 }}
 								>
-									Todos
-								</NavLink>
-							</li>
-							<li>
-								<NavLink
-									to="/quotes"
-									className={({ isActive }) => getLinkClass({ isActive })}
+									<NavLink
+										to="/todos"
+										className={({ isActive }) => getLinkClass({ isActive })}
+									>
+										Todos
+									</NavLink>
+								</motion.li>
+								<motion.li
+									initial={{ y: -20 }}
+									animate={{ y: 0 }}
+									transition={{ delay: 0.3 }}
 								>
-									Quotes
-								</NavLink>
-							</li>
-							<ThemeToggle />
-						</ul>
-					)}
+									<NavLink
+										to="/quotes"
+										className={({ isActive }) => getLinkClass({ isActive })}
+									>
+										Quotes
+									</NavLink>
+								</motion.li>
+								<motion.li
+									initial={{ y: -20 }}
+									animate={{ y: 0 }}
+									transition={{ delay: 0.4 }}
+								>
+									<ThemeToggle />
+								</motion.li>
+							</motion.ul>
+						)}
+					</AnimatePresence>
 				</div>
 			) : (
 				<nav
