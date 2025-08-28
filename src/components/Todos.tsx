@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
 import { BiPencil } from "react-icons/bi";
 import { CgAdd } from "react-icons/cg";
@@ -118,68 +119,80 @@ const Todos = () => {
 			</div>
 
 			{/* Todo Form Modal */}
-			{isModalOpen && (
-				<div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
-					<div className="bg-white mx-4 lg:mx-0 dark:bg-black dark:text-white p-6 rounded-lg shadow-lg w-full max-w-md">
-						<h2 className="text-2xl font-bold mb-4">Add New Todo</h2>
-						<div>
-							<label className="block mb-2">Title</label>
-							<input
-								type="text"
-								name="title"
-								value={todoForm.title}
-								maxLength={50}
-								required
-								onChange={handleInputChange}
-								className="w-full p-2 border border-gray-300 rounded-lg mb-4"
-							/>
-							<label className="block mb-2">Due Date</label>
-							<input
-								type="date"
-								name="dueDate"
-								min={new Date().toISOString().split("T")[0]}
-								value={todoForm.dueDate}
-								required
-								onChange={handleInputChange}
-								className="w-full p-2 border border-gray-300 rounded-lg mb-4 dark:[&::-webkit-calendar-picker-indicator]:invert"
-							/>
-							<label className="block mb-2">Urgency</label>
-							<select
-								name="urgency"
-								value={todoForm.urgency}
-								onChange={handleInputChange}
-								className="w-full p-2 border dark:bg-black dark:text-white border-gray-300 rounded-lg mb-4"
-							>
-								<option value="low">Low</option>
-								<option value="medium">Medium</option>
-								<option value="high">High</option>
-							</select>
-						</div>
-						<div className="flex items-center justify-center gap-8">
-							<button
-								className="px-2 py-1 bg-red-500 text-white rounded-lg font-semibold hover:scale-105 transition-all duration-75 cursor-pointer"
-								onClick={() => {
-									setIsModalOpen(false);
-									setTodoForm({
-										title: "",
-										dueDate: "",
-										urgency: "low",
-									});
-								}}
-							>
-								Cancel
-							</button>
-							<button
-								disabled={!todoForm.title || !todoForm.dueDate}
-								className="w-16 px-2 py-1 bg-green-500 text-white rounded-lg font-semibold hover:scale-105 transition-all duration-75 cursor-pointer disabled:opacity-50"
-								onClick={handleAddTodo}
-							>
-								Add
-							</button>
-						</div>
-					</div>
-				</div>
-			)}
+			<AnimatePresence>
+				{isModalOpen && (
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center"
+					>
+						<motion.div
+							initial={{ scale: 0 }}
+							animate={{ scale: 1 }}
+							exit={{ scale: 0 }}
+							className="bg-white mx-4 lg:mx-0 dark:bg-black dark:text-white p-6 rounded-lg shadow-lg w-full max-w-md"
+						>
+							<h2 className="text-2xl font-bold mb-4">Add New Todo</h2>
+							<div>
+								<label className="block mb-2">Title</label>
+								<input
+									type="text"
+									name="title"
+									value={todoForm.title}
+									maxLength={50}
+									required
+									onChange={handleInputChange}
+									className="w-full p-2 border border-gray-300 rounded-lg mb-4"
+								/>
+								<label className="block mb-2">Due Date</label>
+								<input
+									type="date"
+									name="dueDate"
+									min={new Date().toISOString().split("T")[0]}
+									value={todoForm.dueDate}
+									required
+									onChange={handleInputChange}
+									className="w-full p-2 border border-gray-300 rounded-lg mb-4 dark:[&::-webkit-calendar-picker-indicator]:invert"
+								/>
+								<label className="block mb-2">Urgency</label>
+								<select
+									name="urgency"
+									value={todoForm.urgency}
+									onChange={handleInputChange}
+									className="w-full p-2 border dark:bg-black dark:text-white border-gray-300 rounded-lg mb-4"
+								>
+									<option value="low">Low</option>
+									<option value="medium">Medium</option>
+									<option value="high">High</option>
+								</select>
+							</div>
+							<div className="flex items-center justify-center gap-8">
+								<button
+									className="px-2 py-1 bg-red-500 text-white rounded-lg font-semibold hover:scale-105 transition-all duration-75 cursor-pointer"
+									onClick={() => {
+										setIsModalOpen(false);
+										setTodoForm({
+											title: "",
+											dueDate: "",
+											urgency: "low",
+										});
+									}}
+								>
+									Cancel
+								</button>
+								<button
+									disabled={!todoForm.title || !todoForm.dueDate}
+									className="w-16 px-2 py-1 bg-green-500 text-white rounded-lg font-semibold hover:scale-105 transition-all duration-75 cursor-pointer disabled:opacity-50"
+									onClick={handleAddTodo}
+								>
+									Add
+								</button>
+							</div>
+						</motion.div>
+					</motion.div>
+				)}
+			</AnimatePresence>
 
 			{/* Add Todo Button */}
 			<button
