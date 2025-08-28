@@ -195,23 +195,27 @@ const Todos = () => {
 			</AnimatePresence>
 
 			{/* Add Todo Button */}
-			<button
+			<motion.button
+				whileHover={{ scale: 1.1 }}
+				whileTap={{ scale: 0.9 }}
 				onClick={() => {
 					setIsModalOpen(true);
 					setTodoForm({ title: "", dueDate: "", urgency: "low" });
 				}}
-				className="cursor-pointer hover:scale-105 transition-transform duration-200"
+				className="cursor-pointer"
 			>
 				<CgAdd className="size-12 mt-4 rounded-full text-white bg-green-500 hover:bg-green-600 transition-colors duration-200" />
-			</button>
+			</motion.button>
 
 			{/* Edit Todos Button */}
-			<button
+			<motion.button
+				whileHover={{ scale: 1.1 }}
+				whileTap={{ scale: 0.9 }}
 				disabled={todos.length === 0}
 				onClick={() => {
 					setIsEditMode((prev) => !prev);
 				}}
-				className="cursor-pointer hover:scale-105 ml-2 transition-transform duration-200 disabled:opacity-50"
+				className="cursor-pointer ml-2 disabled:opacity-50"
 			>
 				<BiPencil
 					className={`size-12 p-1 mt-4 rounded-full text-white ${
@@ -220,7 +224,7 @@ const Todos = () => {
 							: "bg-green-500 hover:bg-green-600"
 					}  transition-colors duration-200`}
 				/>
-			</button>
+			</motion.button>
 
 			{/* Todo List */}
 			{processedTodos.length > 0 ? (
