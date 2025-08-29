@@ -257,18 +257,20 @@ const Todos = () => {
 							</div>
 							<div className="ml-auto flex items-center gap-2">
 								<span className="text-white font-semibold">{todo.urgency}</span>
-								{isEditMode && (
-									<motion.button
-										initial={{ opacity: 0, scale: 0, x: 20 }}
-										animate={{ opacity: 1, scale: 1, x: 0 }}
-										exit={{ opacity: 0, scale: 0, x: 20 }}
-										transition={{ duration: 0.2 }}
-										onClick={() => handleDeleteTodo(todo.id)}
-										className="cursor-pointer hover:scale-105 transition-all duration-200 shadow-sm rounded-full"
-									>
-										<TbTrash className="size-8 p-1 text-white bg-red-500 rounded-full" />
-									</motion.button>
-								)}
+								<AnimatePresence>
+									{isEditMode && (
+										<motion.button
+											initial={{ opacity: 0, scale: 0, x: 20 }}
+											animate={{ opacity: 1, scale: 1, x: 0 }}
+											exit={{ opacity: 0, scale: 0, x: 20 }}
+											transition={{ duration: 0.2 }}
+											onClick={() => handleDeleteTodo(todo.id)}
+											className="cursor-pointer shadow-sm rounded-full"
+										>
+											<TbTrash className="size-8 p-1 text-white bg-red-500 rounded-full" />
+										</motion.button>
+									)}
+								</AnimatePresence>
 							</div>
 						</div>
 					))}
