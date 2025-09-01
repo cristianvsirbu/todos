@@ -256,7 +256,13 @@ const Todos = () => {
 								</span>
 							</div>
 							<div className="ml-auto flex items-center gap-2">
-								<span className="text-white font-semibold">{todo.urgency}</span>
+								<motion.span
+									animate={{ x: isEditMode ? -5 : 0 }}
+									transition={{ duration: 0.2 }}
+									className="text-white font-semibold"
+								>
+									{todo.urgency}
+								</motion.span>
 								<AnimatePresence>
 									{isEditMode && (
 										<motion.button
