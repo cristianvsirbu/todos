@@ -1,1 +1,1 @@
-## General Repo for exercises in React with TypeScript and Framer Motion
+## Repo for exercising in React + TypeScript + Vite + Framer Motion
